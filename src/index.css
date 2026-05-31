@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-body text-gray-800 bg-white;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+  .section-title {
+    @apply font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-eco-dark mb-4 leading-tight;
+  }
+
+  .section-subtitle {
+    @apply text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed;
+  }
+
+  .section-label {
+    @apply inline-block font-mono text-xs font-bold tracking-widest uppercase text-eco-main mb-3 border border-eco-pale px-3 py-1 rounded-full bg-eco-pale/30;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-eco-main text-white font-body font-semibold px-6 py-3 rounded-full hover:bg-eco-dark transition-all duration-200 shadow-lg hover:shadow-eco-main/30 hover:-translate-y-0.5;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 border-2 border-eco-main text-eco-main font-body font-semibold px-6 py-3 rounded-full hover:bg-eco-main hover:text-white transition-all duration-200;
+  }
+
+  .stat-number {
+    @apply font-heading text-5xl font-black text-eco-main leading-none;
+  }
+
+  .section-divider {
+    @apply w-16 h-1 bg-eco-light rounded-full mx-auto my-6;
+  }
+}
+
+/* Decorative grain overlay */
+.grain {
+  position: relative;
+}
+.grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Scroll animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Mobile nav */
+.nav-link {
+  @apply text-sm font-body font-medium text-gray-700 hover:text-eco-main transition-colors duration-150;
+}
+
+/* Table */
+.eco-table {
+  @apply w-full border-collapse;
+}
+.eco-table th {
+  @apply bg-eco-main text-white font-body font-semibold text-sm px-4 py-3 text-left first:rounded-tl-xl last:rounded-tr-xl;
+}
+.eco-table td {
+  @apply px-4 py-3 text-sm border-b border-eco-pale font-body;
+}
+.eco-table tr:last-child td {
+  @apply border-b-0;
+}
+.eco-table tr:nth-child(even) {
+  @apply bg-eco-cream/40;
+}
+
+/* Sticky header shadow */
+.header-scrolled {
+  @apply shadow-md;
+}
