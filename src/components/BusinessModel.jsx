@@ -25,7 +25,7 @@ export default function BusinessModel() {
           </motion.div>
 
           {/* Flow diagram */}
-          <div className="flex flex-col md:flex-row items-stretch justify-center gap-4 mb-16">
+          <div className="flex flex-col md:flex-row items-center md:items-stretch justify-center gap-4 mb-16 max-w-md mx-auto md:max-w-full">
             {[
               { label: 'Кофейни & Кондитерские', sub: 'бесплатное сырьё', icon: '☕', color: 'bg-amber-800/80' },
               { label: '→', sub: null, icon: null, color: null },
@@ -54,7 +54,17 @@ export default function BusinessModel() {
                   whileTap={{
                     scale: 0.95
                   }}
-                  className={`${color} rounded-2xl p-5 text-white text-center flex-1 min-w-[120px] max-w-[160px]`}
+                  className={`
+                    ${color}
+                    rounded-2xl
+                    p-5
+                    text-white
+                    text-center
+                    w-full
+                    md:flex-1
+                    md:min-w-[120px]
+                    md:max-w-[160px]
+                  `}
                 >
                   <motion.div
                     className="text-2xl mb-2"
