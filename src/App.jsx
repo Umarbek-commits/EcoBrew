@@ -14,6 +14,7 @@ import BusinessModel from './components/BusinessModel'
 import Achievements from './components/Achievements'
 import Gallery from './components/Gallery'
 import Footer from './components/Footer'
+import EcoBrewGame from './components/EcoBrewGame'
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
       <Header />
       <main>
         <Hero />
+        <EcoBrewGame />
         <About />
         <Problem />
         <Research />
