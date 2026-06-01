@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { FaTrophy, FaHandshake, FaStore, FaUniversity, FaLeaf } from 'react-icons/fa'
 
 export default function Achievements() {
@@ -13,16 +14,28 @@ export default function Achievements() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 mb-12">
-            <div className="bg-eco-main rounded-3xl p-8 text-white relative overflow-hidden grain col-span-full md:col-span-1">
+            <motion.div
+              className="bg-eco-main rounded-3xl p-8 text-white relative overflow-hidden grain col-span-full md:col-span-1"
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+            >
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full translate-x-1/2 -translate-y-1/2" />
               <FaTrophy className="text-yellow-300 text-4xl mb-4 relative z-10" />
               <div className="font-heading text-6xl font-black text-eco-light mb-1 relative z-10">35 кг</div>
               <div className="font-body text-white/70 mb-3 relative z-10">удобрения продано</div>
               <div className="font-heading text-2xl font-bold text-white relative z-10">= 350 пачек</div>
               <div className="font-body text-white/60 text-sm relative z-10">за 2 месяца работы</div>
-            </div>
+            </motion.div>
 
-            <div className="card p-8 border border-eco-pale/60 flex flex-col justify-center">
+            <motion.div
+              className="card p-8 border border-eco-pale/60 flex flex-col justify-center"
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.15, duration: 0.7 }}
+            >
               <div className="font-mono text-xs font-bold text-eco-main uppercase tracking-wider mb-2">Выручка</div>
               <div className="stat-number mb-1">24 560</div>
               <div className="font-body text-gray-500 text-sm">сом заработано</div>
@@ -31,9 +44,15 @@ export default function Achievements() {
                   С нуля, без стартового капитала, только на органических отходах и партнёрстве с кофейнями.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="card p-8 border border-yellow-200 bg-yellow-50 flex flex-col justify-center">
+            <motion.div
+              className="card p-8 border border-yellow-200 bg-yellow-50 flex flex-col justify-center"
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, duration: 0.7 }}
+            >
               <div className="font-mono text-xs font-bold text-yellow-600 uppercase tracking-wider mb-2">Грант</div>
               <div className="font-heading text-5xl font-black text-yellow-600 mb-1">10 000</div>
               <div className="font-body text-gray-500 text-sm">сом · мэрия Бишкека</div>
@@ -44,7 +63,7 @@ export default function Achievements() {
               <p className="font-body text-xs text-gray-500 mt-2">
                 Грант подтвердил жизнеспособность и социальную ценность проекта на городском уровне.
               </p>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -81,8 +100,18 @@ export default function Achievements() {
                 desc: 'Оптовые поставки теплицам, садовым центрам, агропредприятиям. Контрактное производство под нужды крупных клиентов.',
                 color: 'bg-eco-dark',
               },
-            ].map(({ step, icon: Icon, title, desc, color }) => (
-              <div key={step} className="card overflow-hidden">
+            ].map(({ step, icon: Icon, title, desc, color }, index) => (
+              <motion.div
+                key={step}
+                className="card overflow-hidden"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.2
+                }}
+              >
                 <div className={`${color} p-6 text-white flex items-center gap-4`}>
                   <span className="font-mono text-4xl font-black opacity-30">{step}</span>
                   <div>
@@ -93,7 +122,7 @@ export default function Achievements() {
                 <div className="p-6">
                   <p className="font-body text-gray-600 leading-relaxed">{desc}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -118,22 +147,34 @@ export default function Achievements() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8">
+            <motion.div
+              initial={{ opacity: 0, x: -60 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8"
+            >
               <div className="font-mono text-xs font-bold text-eco-light uppercase tracking-wider mb-4">🎯 Миссия</div>
               <p className="font-heading text-xl text-white leading-relaxed">
                 Создать устойчивую систему переработки кофейных отходов, которая помогает 
                 сохранять окружающую среду, уменьшать мусор и обеспечивать людей 
                 экологически безопасными удобрениями.
               </p>
-            </div>
-            <div className="bg-eco-main/20 backdrop-blur-sm border border-eco-light/20 rounded-3xl p-8">
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 60 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="bg-eco-main/20 backdrop-blur-sm border border-eco-light/20 rounded-3xl p-8"
+            >
               <div className="font-mono text-xs font-bold text-eco-light uppercase tracking-wider mb-4">🔭 Видение</div>
               <p className="font-heading text-xl text-white leading-relaxed">
                 Стать ведущей компанией по переработке кофейных отходов в Кыргызстане 
                 и Центральной Азии, превращая тысячи тонн органического мусора в полезные 
                 продукты для сельского хозяйства и озеленения городов.
               </p>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>

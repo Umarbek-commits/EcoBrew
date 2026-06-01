@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { FaCheckCircle, FaTimesCircle, FaStar } from 'react-icons/fa'
 
 const competitors = [
@@ -43,11 +44,61 @@ export default function Competitors() {
 
         {/* Cards */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
-          {competitors.map(({ name, prices, note, isSelf }) => (
-            <div key={name} className={`rounded-2xl p-6 border-2 ${isSelf ? 'bg-eco-main text-white border-eco-dark shadow-xl scale-105' : 'bg-white border-gray-100'}`}>
+          {competitors.map(({ name, prices, note, isSelf }, index) => (
+            <motion.div
+              key={name}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.6,
+                delay: index * 0.15
+              }}
+              whileHover={{
+                y: -10,
+                scale: isSelf ? 1.08 : 1.04
+              }}
+              whileTap={{
+                scale: 0.96
+              }}
+              animate={
+                isSelf
+                  ? {
+                      boxShadow: [
+                        '0 0 0 rgba(0,0,0,0)',
+                        '0 0 30px rgba(120,200,120,0.4)',
+                        '0 0 0 rgba(0,0,0,0)'
+                      ]
+                    }
+                  : {}
+              }
+              transition={{
+                boxShadow: {
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }
+              }}
+              className={`rounded-2xl p-6 border-2 ${
+                isSelf
+                  ? 'bg-eco-main text-white border-eco-dark shadow-xl scale-105'
+                  : 'bg-white border-gray-100'
+              }`}
+            >
               {isSelf && (
                 <div className="flex items-center gap-1 mb-3">
-                  <FaStar className="text-yellow-300 text-xs" />
+                  <motion.div
+                    animate={{
+                      rotate: [0, 15, -15, 0],
+                      scale: [1, 1.15, 1]
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity
+                    }}
+                  >
+                    <FaStar className="text-yellow-300 text-xs" />
+                  </motion.div>
                   <span className="font-mono text-xs text-eco-light font-bold uppercase tracking-wider">Наш продукт</span>
                 </div>
               )}
@@ -58,12 +109,18 @@ export default function Competitors() {
                 ))}
               </div>
               <p className={`font-body text-sm leading-relaxed ${isSelf ? 'text-white/80' : 'text-gray-500'}`}>{note}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* Table for desktop */}
-        <div className="hidden md:block bg-white rounded-2xl shadow-md overflow-hidden mb-8">
+        <motion.div
+          className="hidden md:block bg-white rounded-2xl shadow-md overflow-hidden mb-8"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
           <table className="eco-table">
             <thead>
               <tr>
@@ -105,11 +162,27 @@ export default function Competitors() {
               </tr>
             </tbody>
           </table>
-        </div>
+        </motion.div>
 
         {/* Warning about competitors */}
-        <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6 flex gap-4">
-          <FaTimesCircle className="text-amber-500 text-2xl flex-shrink-0 mt-0.5" />
+        <motion.div
+          className="bg-amber-50 border border-amber-200 rounded-2xl p-6 flex gap-4"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
+          <motion.div
+            animate={{
+              scale: [1, 1.1, 1]
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity
+            }}
+          >
+            <FaTimesCircle className="text-amber-500 text-2xl flex-shrink-0 mt-0.5" />
+          </motion.div>
           <div>
             <h4 className="font-heading font-bold text-amber-800 mb-1">Недостаток конкурентов</h4>
             <p className="font-body text-amber-700 text-sm">
@@ -119,7 +192,7 @@ export default function Competitors() {
               яичной скорлупы — она нейтрализует кислотность и обогащает почву кальцием.
             </p>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

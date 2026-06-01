@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import goal8 from '../assets/SDG/R-WEB-Goal-08.png'
 import goal11 from '../assets/SDG/R-WEB-Goal-11.png'
 import goal12 from '../assets/SDG/R-WEB-Goal-12.png'
@@ -27,17 +28,47 @@ export default function SDG() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
+        <motion.div
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
           {goals.map((image, index) => (
-            <div key={index}>
-              <img
+            <motion.div
+              key={index}
+              className="bg-white rounded-2xl p-4 shadow-md flex items-center justify-center"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.1
+              }}
+              whileHover={{
+                y: -10,
+                scale: 1.03
+              }}
+              whileTap={{
+                scale: 0.97
+              }}
+            >
+              <motion.img
                 src={image}
                 alt={`SDG ${index + 1}`}
-                className="w-full rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                className="w-full rounded-2xl shadow-md"
+                whileHover={{
+                  scale: 1.05,
+                  filter: 'brightness(1.08)'
+                }}
+                transition={{
+                  duration: 0.3
+                }}
               />
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

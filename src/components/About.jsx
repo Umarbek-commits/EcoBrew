@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { FaLeaf, FaSeedling, FaRecycle } from 'react-icons/fa'
 
 export default function About() {
@@ -6,7 +7,12 @@ export default function About() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left: text */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
             <span className="section-label">О проекте</span>
             <h2 className="section-title">Что такое EcoBrew?</h2>
             <div className="section-divider !mx-0" />
@@ -39,10 +45,16 @@ export default function About() {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Right: big graphic card */}
-          <div className="relative">
+          <motion.div
+            className="relative"
+            initial={{ opacity: 0, x: 50, scale: 0.95 }}
+            whileInView={{ opacity: 1, x: 0, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
             <div className="bg-eco-dark rounded-3xl p-8 text-white overflow-hidden grain relative">
               <div className="absolute top-0 right-0 w-64 h-64 bg-eco-main/30 rounded-full translate-x-1/2 -translate-y-1/2 blur-3xl" />
               <div className="relative z-10">
@@ -78,7 +90,17 @@ export default function About() {
             </div>
 
             {/* Floating badge */}
-            <div className="absolute -bottom-4 -right-4 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3">
+            <motion.div
+              className="absolute -bottom-4 -right-4 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3"
+              animate={{
+                y: [0, -10, 0],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+            >
               <div className="w-10 h-10 bg-eco-pale rounded-xl flex items-center justify-center">
                 <FaSeedling className="text-eco-main text-lg" />
               </div>
@@ -86,8 +108,8 @@ export default function About() {
                 <div className="font-heading font-bold text-eco-dark text-sm">Грант мэрии</div>
                 <div className="font-mono text-xs text-eco-main font-bold">10 000 сом ✓</div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>

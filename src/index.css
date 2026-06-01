@@ -102,3 +102,14 @@
 .header-scrolled {
   @apply shadow-md;
 }
+.ebg-intro-icon {
+  width: 140px;
+  height: 140px;
+  border-radius: 9999px;
+  background: rgba(106, 170, 70, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}

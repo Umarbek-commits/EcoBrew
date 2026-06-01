@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { FaChartLine, FaUsers, FaSeedling, FaCoffee } from 'react-icons/fa'
 
 const stats = [
@@ -48,20 +49,56 @@ export default function Research() {
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
-          {stats.map(({ icon: Icon, num, label, desc }) => (
-            <div key={label} className="card p-6 text-center border border-eco-pale/60 hover:border-eco-main/30">
-              <div className="w-12 h-12 bg-eco-pale/40 rounded-2xl flex items-center justify-center mx-auto mb-4">
+          {stats.map(({ icon: Icon, num, label, desc }, index) => (
+            <motion.div
+              key={label}
+              className="card p-6 text-center border border-eco-pale/60 hover:border-eco-main/30"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.12
+              }}
+              whileHover={{
+                y: -8,
+                scale: 1.03
+              }}
+              whileTap={{
+                scale: 0.97
+              }}
+            >
+              <motion.div
+                className="w-12 h-12 bg-eco-pale/40 rounded-2xl flex items-center justify-center mx-auto mb-4"
+                whileHover={{
+                  rotate: 10,
+                  scale: 1.15
+                }}
+              >
                 <Icon className="text-eco-main text-xl" />
-              </div>
-              <div className="font-heading text-4xl font-black text-eco-main mb-1">{num}</div>
+              </motion.div>
+              <motion.div
+                className="font-heading text-4xl font-black text-eco-main mb-1"
+                whileHover={{
+                  scale: 1.15
+                }}
+              >
+                {num}
+              </motion.div>
               <div className="font-body font-semibold text-eco-dark text-sm mb-2">{label}</div>
               <p className="font-body text-gray-500 text-xs leading-relaxed">{desc}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* Bar chart visual */}
-        <div className="mt-12 bg-eco-cream/50 rounded-3xl p-8">
+        <motion.div
+          className="mt-12 bg-eco-cream/50 rounded-3xl p-8"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
           <h3 className="font-heading font-bold text-xl text-eco-dark mb-6 text-center">
             Ключевые показатели исследования
           </h3>
@@ -77,15 +114,21 @@ export default function Research() {
                   <span className="font-mono text-sm font-bold text-eco-dark">{pct}%</span>
                 </div>
                 <div className="h-3 bg-white rounded-full overflow-hidden shadow-inner">
-                  <div
+                  <motion.div
                     className={`h-full ${color} rounded-full`}
-                    style={{ width: `${pct}%` }}
+                    initial={{ width: 0 }}
+                    whileInView={{ width: `${pct}%` }}
+                    viewport={{ once: true }}
+                    transition={{
+                      duration: 1.5,
+                      ease: 'easeOut'
+                    }}
                   />
                 </div>
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

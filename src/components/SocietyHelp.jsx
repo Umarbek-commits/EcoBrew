@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { FaLeaf, FaMoneyBillWave, FaUsers, FaRecycle, FaHandHoldingHeart, FaHome, FaSeedling } from 'react-icons/fa'
 
 const blocks = [
@@ -49,23 +50,55 @@ export default function SocietyHelp() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {blocks.map(({ icon: Icon, title, color, items }) => (
-              <div key={title} className="card overflow-hidden">
+            {blocks.map(({ icon: Icon, title, color, items }, index) => (
+              <motion.div
+                key={title}
+                className="card overflow-hidden"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.15
+                }}
+                whileHover={{
+                  y: -10,
+                  scale: 1.02
+                }}
+                whileTap={{
+                  scale: 0.97
+                }}
+              >
                 <div className={`${color} p-6 text-white`}>
-                  <Icon className="text-3xl mb-3 opacity-90" />
+                  <motion.div
+                    whileHover={{
+                      rotate: 10,
+                      scale: 1.15
+                    }}
+                  >
+                    <Icon className="text-3xl mb-3 opacity-90" />
+                  </motion.div>
                   <h3 className="font-heading font-bold text-xl">{title}</h3>
                 </div>
                 <div className="p-6">
                   <ul className="space-y-3">
                     {items.map(item => (
                       <li key={item} className="flex items-start gap-2 font-body text-sm text-gray-700">
-                        <span className="text-eco-main mt-0.5 flex-shrink-0">✓</span>
+                        <motion.span
+                          className="text-eco-main mt-0.5 flex-shrink-0"
+                          whileHover={{
+                            scale: 1.3,
+                            rotate: 15
+                          }}
+                        >
+                          ✓
+                        </motion.span>
                         {item}
                       </li>
                     ))}
                   </ul>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -99,12 +132,38 @@ export default function SocietyHelp() {
                 { label: 'Растения', emoji: '🌱', color: 'bg-eco-light' },
               ].map(({ label, emoji, color }, idx) => (
                 emoji ? (
-                  <div key={idx} className={`${color} text-white rounded-2xl px-6 py-4 text-center shadow-md min-w-[100px]`}>
+                  <motion.div
+                    key={idx}
+                    className={`${color} text-white rounded-2xl px-6 py-4 text-center shadow-md min-w-[100px]`}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{
+                      duration: 0.4,
+                      delay: idx * 0.15
+                    }}
+                    whileHover={{
+                      y: -8,
+                      scale: 1.05
+                    }}
+                  >
                     <div className="text-2xl mb-1">{emoji}</div>
                     <div className="font-body font-semibold text-sm">{label}</div>
-                  </div>
+                  </motion.div>
                 ) : (
-                  <div key={idx} className="font-heading text-2xl font-bold text-eco-light hidden md:block">→</div>
+                  <motion.div
+                    key={idx}
+                    className="font-heading text-2xl font-bold text-eco-light hidden md:block"
+                    animate={{
+                      x: [0, 8, 0]
+                    }}
+                    transition={{
+                      duration: 1.5,
+                      repeat: Infinity
+                    }}
+                  >
+                    →
+                  </motion.div>
                 )
               ))}
             </div>
@@ -129,7 +188,14 @@ export default function SocietyHelp() {
 
           <div className="grid md:grid-cols-2 gap-8">
             {/* B2C */}
-            <div className="bg-white rounded-3xl p-8 shadow-md border border-eco-pale/60">
+            <motion.div
+              className="bg-white rounded-3xl p-8 shadow-md border border-eco-pale/60"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              whileHover={{ y: -8 }}
+            >
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-12 bg-eco-pale/50 rounded-xl flex items-center justify-center">
                   <FaHome className="text-eco-main text-xl" />
@@ -152,10 +218,17 @@ export default function SocietyHelp() {
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             {/* B2B */}
-            <div className="bg-eco-dark rounded-3xl p-8 shadow-md text-white relative overflow-hidden grain">
+            <motion.div
+              className="bg-eco-dark rounded-3xl p-8 shadow-md text-white relative overflow-hidden grain"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              whileHover={{ y: -8 }}
+            >
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full translate-x-1/3 -translate-y-1/3" />
               <div className="flex items-center gap-3 mb-6 relative z-10">
                 <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
@@ -181,7 +254,7 @@ export default function SocietyHelp() {
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>

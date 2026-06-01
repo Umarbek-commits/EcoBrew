@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback } from "react";
+import logo from '../assets/logo.png'
 
 const styles = `
   @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Playfair+Display:wght@700&display=swap');
@@ -124,10 +125,13 @@ const CONFETTI_COLORS = ['#2d7a45','#5bb870','#f4a261','#e9c46a','#e76f51','#264
 
 function Header() {
   return (
-    <div className="ebg-header">
-      <div className="ebg-logo">🌿</div>
-      <span className="ebg-brand">EcoBrew</span>
-    </div>
+    <div className="w-12 h-12 mx-auto mb-8 rounded-full bg-eco-pale/40 backdrop-blur-sm flex items-center justify-center shadow-xl">
+  <img
+    src={logo}
+    alt="EcoBrew"
+    className="w12 h-12 object-contain animate-pulse"
+  />
+</div>
   );
 }
 
@@ -145,7 +149,13 @@ function ScreenIntro({ onStart }) {
     <div className="ebg-screen">
       <Header />
       <div className="ebg-intro-hero">
-        <div className="ebg-intro-icon">🌱</div>
+        <div className="ebg-intro-icon">
+           <img
+             src={logo}
+             alt="EcoBrew"
+             className="w-24 h-24 object-contain"
+           />
+        </div>
         <div className="ebg-intro-title">Создай своё первое&nbsp;EcoBrew</div>
         <div className="ebg-intro-sub">
           Узнай за минуту, как кофейный жмых превращается в экологическое удобрение.
@@ -469,6 +479,7 @@ export default function EcoBrewGame() {
   return (
     <>
       <style>{styles}</style>
+      <section id="game">
       <div className="ebg-wrap">
         {step === 'intro'  && <ScreenIntro  onStart={() => go('step1')} />}
         {step === 'step1'  && <ScreenStep1  onDone={() => go('step2')} />}
@@ -478,6 +489,7 @@ export default function EcoBrewGame() {
         {step === 'step5'  && <ScreenStep5  onDone={() => go('final')} />}
         {step === 'final'  && <ScreenFinal  onRestart={() => go('intro')} />}
       </div>
+      </section>
     </>
   );
 }

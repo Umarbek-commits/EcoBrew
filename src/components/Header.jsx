@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
 import { FaLeaf } from 'react-icons/fa'
 import logo from '../assets/logo.png'
 
@@ -6,6 +7,7 @@ const navLinks = [
   { label: 'О проекте', href: '#about' },
   { label: 'Проблема', href: '#problem' },
   { label: 'Решение', href: '#solution' },
+  { label: '🧪 EcoBrew Lab', href: '#game' },
   { label: 'Продукт', href: '#product' },
   { label: 'Результаты', href: '#results' },
   { label: 'Бизнес', href: '#business' },
@@ -23,31 +25,66 @@ export default function Header() {
   }, [])
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm transition-shadow duration-300 ${scrolled ? 'shadow-md' : ''}`}>
+    <header className={`fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm transition-all duration-300 ${scrolled ? 'shadow-xl backdrop-blur-md' : ''}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a href="#hero" className="flex items-center gap-2 group">
-            <img
-  src={logo}
-  alt="EcoBrew"
-  className="w-12 h-12 object-contain"
-/>
+          <motion.a
+            href="#hero"
+            className="flex items-center gap-2 group"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <motion.img
+              src={logo}
+              alt="EcoBrew"
+              className="w-12 h-12 object-contain"
+              whileHover={{
+                rotate: 10,
+                scale: 1.1
+              }}
+              transition={{
+                duration: 0.3
+              }}
+            />
             <span className="font-heading font-bold text-xl text-eco-dark tracking-tight">EcoBrew</span>
-          </a>
+          </motion.a>
 
           {/* Desktop nav */}
           <nav className="hidden lg:flex items-center gap-6">
             {navLinks.map(link => (
-              <a key={link.href} href={link.href} className="nav-link">{link.label}</a>
+              <motion.a
+                key={link.href}
+                href={link.href}
+                className="nav-link"
+                whileHover={{
+                  y: -2,
+                  scale: 1.05
+                }}
+                whileTap={{
+                  scale: 0.95
+                }}
+              >
+                {link.label}
+              </motion.a>
             ))}
           </nav>
 
           {/* CTA + Burger */}
           <div className="flex items-center gap-3">
-            <a href="https://www.instagram.com/eco_brew.ec?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" className="hidden sm:inline-flex btn-primary text-sm py-2 px-4">
+            <motion.a
+              href="https://www.instagram.com/eco_brew.ec?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+              className="hidden sm:inline-flex btn-primary text-sm py-2 px-4"
+              whileHover={{
+                scale: 1.08,
+                y: -2
+              }}
+              whileTap={{
+                scale: 0.95
+              }}
+            >
               Стать партнёром
-            </a>
+            </motion.a>
             <button
               className="lg:hidden p-2 rounded-lg hover:bg-eco-pale/30"
               onClick={() => setMenuOpen(!menuOpen)}
@@ -65,7 +102,13 @@ export default function Header() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="lg:hidden bg-white border-t border-gray-100 px-4 py-4 flex flex-col gap-3 shadow-lg">
+        <motion.div
+          className="lg:hidden bg-white border-t border-gray-100 px-4 py-4 flex flex-col gap-3 shadow-lg"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.3 }}
+        >
           {navLinks.map(link => (
             <a
               key={link.href}
@@ -76,10 +119,14 @@ export default function Header() {
               {link.label}
             </a>
           ))}
-          <a href="https://www.instagram.com/eco_brew.ec" className="btn-primary text-sm mt-2 text-center justify-center" onClick={() => setMenuOpen(false)}>
+          <a
+            href="https://www.instagram.com/eco_brew.ec"
+            className="btn-primary text-sm mt-2 text-center justify-center"
+            onClick={() => setMenuOpen(false)}
+          >
             Стать партнёром
           </a>
-        </div>
+        </motion.div>
       )}
     </header>
   )

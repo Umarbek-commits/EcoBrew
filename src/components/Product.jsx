@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { FaLeaf, FaWater, FaBug, FaGlobe, FaCheckCircle } from 'react-icons/fa'
 
 const features = [
@@ -46,48 +47,117 @@ export default function Product() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-6 mb-12">
-          {features.map(({ icon: Icon, title, desc }) => (
-            <div key={title} className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-colors">
-              <div className="w-12 h-12 bg-eco-light/20 rounded-xl flex items-center justify-center mb-4">
+          {features.map(({ icon: Icon, title, desc }, index) => (
+            <motion.div
+              key={title}
+              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-colors"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.15
+              }}
+              whileHover={{
+                y: -8,
+                scale: 1.03
+              }}
+              whileTap={{
+                scale: 0.97
+              }}
+            >
+              <motion.div
+                className="w-12 h-12 bg-eco-light/20 rounded-xl flex items-center justify-center mb-4"
+                whileHover={{
+                  rotate: 10,
+                  scale: 1.15
+                }}
+              >
                 <Icon className="text-eco-light text-xl" />
-              </div>
+              </motion.div>
               <h3 className="font-heading font-bold text-white text-xl mb-2">{title}</h3>
               <p className="font-body text-white/60 leading-relaxed">{desc}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* Product variants */}
         <div className="grid sm:grid-cols-2 gap-6">
-          <div className="bg-eco-cream rounded-3xl p-8 text-eco-dark relative overflow-hidden">
+          <motion.div
+            className="bg-eco-cream rounded-3xl p-8 text-eco-dark relative overflow-hidden"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            whileHover={{
+              y: -10
+            }}
+          >
             <div className="absolute top-4 right-4 bg-eco-main text-white text-xs font-mono font-bold px-2 py-1 rounded-full">HOME</div>
-            <div className="font-heading text-6xl font-black text-eco-brown mb-2">100г</div>
+            <motion.div
+              className="font-heading text-6xl font-black text-eco-brown mb-2"
+              whileHover={{
+                scale: 1.1
+              }}
+            >
+              100г
+            </motion.div>
             <h3 className="font-heading font-bold text-2xl mb-2">Для дома и балкона</h3>
             <p className="font-body text-gray-600 text-sm mb-4">Идеально для комнатных растений, балконных ящиков и небольших грядок. Удобна в хранении и применении.</p>
             <ul className="space-y-2">
               {['Горшечные растения', 'Балконный огород', 'Зелень и травы', 'Цветники'].map(i => (
                 <li key={i} className="flex items-center gap-2 font-body text-sm text-gray-700">
-                  <FaCheckCircle className="text-eco-main flex-shrink-0" />
+                  <motion.div
+                    whileHover={{
+                      rotate: 20,
+                      scale: 1.2
+                    }}
+                  >
+                    <FaCheckCircle className="text-eco-main flex-shrink-0" />
+                  </motion.div>
                   {i}
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
-          <div className="bg-eco-main rounded-3xl p-8 text-white relative overflow-hidden grain">
+          <motion.div
+            className="bg-eco-main rounded-3xl p-8 text-white relative overflow-hidden grain"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            whileHover={{
+              y: -10
+            }}
+          >
             <div className="absolute top-4 right-4 bg-white text-eco-main text-xs font-mono font-bold px-2 py-1 rounded-full">PRO</div>
-            <div className="font-heading text-6xl font-black text-eco-light mb-2">5кг</div>
+            <motion.div
+              className="font-heading text-6xl font-black text-white mb-2"
+              whileHover={{
+                scale: 1.1
+              }}
+            >
+              5кг
+            </motion.div>
             <h3 className="font-heading font-bold text-2xl mb-2">Для сада и фермы</h3>
             <p className="font-body text-white/70 text-sm mb-4">Оптовый формат для дачников, садовых центров, теплиц, ландшафтных компаний и агропредприятий.</p>
             <ul className="space-y-2">
               {['Теплицы и фермы', 'Садовые центры', 'Огороды и дачи', 'Питомники'].map(i => (
                 <li key={i} className="flex items-center gap-2 font-body text-sm text-white/80">
-                  <FaCheckCircle className="text-eco-light flex-shrink-0" />
+                  <motion.div
+                    whileHover={{
+                      rotate: 20,
+                      scale: 1.2
+                    }}
+                  >
+                    <FaCheckCircle className="text-eco-light flex-shrink-0" />
+                  </motion.div>
                   {i}
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

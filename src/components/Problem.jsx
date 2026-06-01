@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { FaExclamationTriangle, FaIndustry, FaGlobe, FaFire } from 'react-icons/fa'
 
 const problems = [
@@ -54,27 +55,73 @@ export default function Problem() {
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {problems.map(({ icon: Icon, number, unit, title, desc, color, numColor }) => (
-            <div key={title} className={`card border ${color} p-6`}>
-              <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mb-4 shadow-sm">
+          {problems.map(({ icon: Icon, number, unit, title, desc, color, numColor }, index) => (
+            <motion.div
+              key={title}
+              className={`card border ${color} p-6`}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.15
+              }}
+              whileHover={{
+                y: -8,
+                scale: 1.03
+              }}
+              whileTap={{
+                scale: 0.97
+              }}
+            >
+              <motion.div
+                className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mb-4 shadow-sm"
+                whileHover={{
+                  rotate: 8,
+                  scale: 1.15
+                }}
+              >
                 <Icon className={`text-xl ${numColor}`} />
-              </div>
-              <div className={`font-heading text-3xl font-black ${numColor} leading-none mb-1`}>{number}</div>
+              </motion.div>
+              <motion.div
+                className={`font-heading text-3xl font-black ${numColor} leading-none mb-1`}
+                whileHover={{
+                  scale: 1.15
+                }}
+              >
+                {number}
+              </motion.div>
               {unit && <div className="font-mono text-xs text-gray-500 uppercase tracking-wider mb-3">{unit}</div>}
               <h3 className="font-heading font-bold text-gray-800 text-lg mb-2">{title}</h3>
               <p className="font-body text-gray-600 text-sm leading-relaxed">{desc}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* Big callout */}
-        <div className="bg-eco-dark rounded-3xl p-8 md:p-12 text-white text-center relative overflow-hidden grain">
+        <motion.div
+          className="bg-eco-dark rounded-3xl p-8 md:p-12 text-white text-center relative overflow-hidden grain"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-0 left-0 w-96 h-96 bg-red-500 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl" />
             <div className="absolute bottom-0 right-0 w-96 h-96 bg-orange-500 rounded-full translate-x-1/2 translate-y-1/2 blur-3xl" />
           </div>
           <div className="relative z-10">
-            <FaExclamationTriangle className="text-yellow-400 text-4xl mx-auto mb-4" />
+            <motion.div
+              animate={{
+                rotate: [0, -5, 5, 0]
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity
+              }}
+            >
+              <FaExclamationTriangle className="text-yellow-400 text-4xl mx-auto mb-4" />
+            </motion.div>
             <p className="font-heading text-2xl md:text-3xl font-bold text-white mb-4">
               Органические отходы выделяют метан —<br />
               газ, который в <span className="text-yellow-400">86 раз опаснее CO₂</span>
@@ -85,7 +132,7 @@ export default function Problem() {
               именно то, что нужно вашим растениям. Просто выбрасывать его — расточительство.
             </p>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )
