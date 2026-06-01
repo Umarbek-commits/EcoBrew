@@ -19,7 +19,7 @@ export default function Hero() {
           {/* Label */}
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-eco-pale border border-white/20 rounded-full px-4 py-2 text-xs font-mono font-bold tracking-widest uppercase mb-8">
             <FaLeaf className="text-eco-light animate-pulse-slow" />
-            Экологический стартап · Бишкек, Кыргызстан · 2024
+            Экологический стартап · Бишкек, Кыргызстан · 2026
           </div>
 
           {/* Main heading */}
@@ -45,7 +45,7 @@ export default function Hero() {
               <FaLeaf />
               О проекте
             </a>
-            <a href="#partner" id="partner" className="inline-flex items-center justify-center gap-2 border-2 border-white/40 text-white font-body font-semibold px-8 py-4 rounded-full text-lg hover:bg-white/10 hover:border-white transition-all duration-200">
+            <a href="https://www.instagram.com/eco_brew.ec" id="partner" className="inline-flex items-center justify-center gap-2 border-2 border-white/40 text-white font-body font-semibold px-8 py-4 rounded-full text-lg hover:bg-white/10 hover:border-white transition-all duration-200">
               Стать партнёром
             </a>
           </div>

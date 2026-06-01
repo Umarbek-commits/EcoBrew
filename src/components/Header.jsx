@@ -73,7 +73,7 @@ export default function Header() {
               {link.label}
             </a>
           ))}
-          <a href="#partner" className="btn-primary text-sm mt-2 text-center justify-center" onClick={() => setMenuOpen(false)}>
+          <a href="https://www.instagram.com/eco_brew.ec" className="btn-primary text-sm mt-2 text-center justify-center" onClick={() => setMenuOpen(false)}>
             Стать партнёром
           </a>
         </div>
