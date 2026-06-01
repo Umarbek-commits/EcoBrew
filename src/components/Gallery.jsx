@@ -1,33 +1,40 @@
+import drying from '../assets/gallery/drying.jpg'
+import grant from '../assets/gallery/grant.jpg'
+import packing from '../assets/gallery/packing.jpg'
+import partners from '../assets/gallery/partners.png'
+import plants from '../assets/gallery/plants.jpg'
+import shell from '../assets/gallery/shell.jpg'
+
 const photos = [
   {
-    url: 'https://placehold.co/600x400/2E7D32/FFFFFF?text=Встреча+с+партнёрами',
+    url: partners,
     caption: 'Встреча с партнёрами',
     desc: 'Переговоры с кофейней «Бублик» о партнёрстве и регулярном сборе жмыха',
   },
   {
-    url: 'https://placehold.co/600x400/5D4037/FFFFFF?text=Сушка+жмыха',
+    url: drying,
     caption: 'Сушка жмыха',
     desc: 'Первый этап переработки — равномерная просушка кофейного жмыха перед компостированием',
   },
   {
-    url: 'https://placehold.co/600x400/F5F5DC/2E7D32?text=Измельчение+скорлупы',
+    url: shell,
     caption: 'Измельчение скорлупы',
     desc: 'Яичная скорлупа измельчается и подготавливается для смешивания в пропорции 1:2',
   },
   {
-    url: 'https://placehold.co/600x400/388E3C/FFFFFF?text=Фасовка+удобрения',
+    url: packing,
     caption: 'Фасовка удобрения',
-    desc: 'Готовый продукт расфасовывается в пакеты по 100г и 5кг для разных категорий покупателей',
+    desc: 'Готовый продукт расфасовывается в пакеты по 100г и 5кг',
   },
   {
-    url: 'https://placehold.co/600x400/4CAF50/FFFFFF?text=Растения+с+EcoBrew',
+    url: plants,
     caption: 'Растения с EcoBrew',
     desc: 'Результат эксперимента: растения с удобрением EcoBrew значительно обогнали контрольную группу',
   },
   {
-    url: 'https://placehold.co/600x400/1B5E20/F5F5DC?text=Грант+на+хакатоне',
-    caption: 'Выдача гранта на хакатоне',
-    desc: 'Победа в хакатоне мэрии Бишкека — получение гранта 10 000 сомов, признание проекта',
+    url: grant,
+    caption: 'Грант на хакатоне',
+    desc: 'Победа в хакатоне мэрии Бишкека — получение гранта и признание проекта',
   },
 ]
 
@@ -54,9 +61,15 @@ export default function Gallery() {
                   className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
+
               <div className="p-5">
-                <h3 className="font-heading font-bold text-eco-dark text-lg mb-2">{caption}</h3>
-                <p className="font-body text-gray-500 text-sm leading-relaxed">{desc}</p>
+                <h3 className="font-heading font-bold text-eco-dark text-lg mb-2">
+                  {caption}
+                </h3>
+
+                <p className="font-body text-gray-500 text-sm leading-relaxed">
+                  {desc}
+                </p>
               </div>
             </div>
           ))}

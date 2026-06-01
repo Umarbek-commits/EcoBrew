@@ -9,6 +9,7 @@ const advantages = [
   },
   {
     icon: FaShieldAlt,
+    title: 'Безопасно для природы', // ✅ Добавлен заголовок
     desc: 'В отличие от большинства инсектицидов, EcoBrew не вредит пчёлам и другим полезным опылителям. Ваш сад остаётся экологически здоровым.',
     sources: 'inlavka.ru, geoglass.ru',
   },
@@ -38,8 +39,8 @@ export default function Advantages() {
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
-          {advantages.map(({ icon: Icon, title, desc, sources }) => (
-            <div key={title} className="card p-6 border border-eco-pale/60 hover:border-eco-main/30 group">
+          {advantages.map(({ icon: Icon, title, desc, sources }, index) => ( // ✅ Используем index как key
+            <div key={index} className="card p-6 border border-eco-pale/60 hover:border-eco-main/30 group">
               <div className="w-14 h-14 bg-eco-pale/40 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-eco-pale transition-colors">
                 <Icon className="text-eco-main text-2xl" />
               </div>

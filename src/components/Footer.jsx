@@ -74,10 +74,10 @@ export default function Footer() {
           <div>
             <h4 className="font-heading font-bold text-lg mb-4 text-eco-light">Контакты</h4>
             <p className="font-body text-white/60 text-sm mb-2">📍 Бишкек, Кыргызстан</p>
-            <p className="font-body text-white/60 text-sm mb-4">📧 hello@ecobrew.kg</p>
+            <p className="font-body text-white/60 text-sm mb-4">📧 enactus@college.edu.kg</p>
             <div className="bg-white/5 border border-white/10 rounded-xl p-4">
               <p className="font-body text-white/70 text-xs leading-relaxed">
-                Если вы кофейня, ресторан, офис или учебное заведение — мы готовы 
+                Если вы владелец кофейни— мы готовы 
                 бесплатно забирать ваш кофейный жмых. Станьте частью замкнутого цикла!
               </p>
             </div>

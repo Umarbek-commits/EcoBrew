@@ -46,7 +46,9 @@ export default function About() {
             <div className="bg-eco-dark rounded-3xl p-8 text-white overflow-hidden grain relative">
               <div className="absolute top-0 right-0 w-64 h-64 bg-eco-main/30 rounded-full translate-x-1/2 -translate-y-1/2 blur-3xl" />
               <div className="relative z-10">
-                <div className="font-heading text-6xl font-black text-eco-light mb-2">600+</div>
+                <div className="font-heading text-6xl font-black !text-white mb-2">
+  600+
+</div>
                 <p className="font-body text-white/70 mb-6 text-sm uppercase tracking-wider">кофеен в Бишкеке</p>
 
                 <div className="flex items-end gap-4 mb-8">

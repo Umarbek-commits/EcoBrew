@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { FaLeaf } from 'react-icons/fa'
+import logo from '../assets/logo.png'
 
 const navLinks = [
   { label: 'О проекте', href: '#about' },
@@ -27,9 +28,11 @@ export default function Header() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <a href="#hero" className="flex items-center gap-2 group">
-            <div className="w-9 h-9 bg-eco-main rounded-xl flex items-center justify-center shadow-md group-hover:bg-eco-dark transition-colors">
-              <FaLeaf className="text-white text-lg" />
-            </div>
+            <img
+  src={logo}
+  alt="EcoBrew"
+  className="w-12 h-12 object-contain"
+/>
             <span className="font-heading font-bold text-xl text-eco-dark tracking-tight">EcoBrew</span>
           </a>
 

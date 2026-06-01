@@ -59,7 +59,8 @@ export default function Hero() {
               { num: '24 560', label: 'сом выручки' },
             ].map(stat => (
               <div key={stat.label}>
-                <div className="font-heading text-2xl sm:text-3xl font-black text-eco-light">{stat.num}</div>
+                <div className="font-heading text-2xl sm:text-3xl font-black text-white drop-shadow-lg">{stat.num}
+                </div>
                 <div className="font-body text-xs text-white/50 mt-0.5 tracking-wide">{stat.label}</div>
               </div>
             ))}
