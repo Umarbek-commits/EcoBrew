@@ -18,7 +18,7 @@ export default function About() {
             <div className="section-divider !mx-0" />
             <p className="font-body text-gray-700 text-lg leading-relaxed mb-6">
               <strong className="text-eco-dark">EcoBrew</strong> — экологический стартап, который собирает 
-              использованную кофейную гущу из кофеен, ресторанов, офисов и университетов 
+              использованную кофейную гущу из кофеен,
               и перерабатывает её в <strong className="text-eco-main">органическое удобрение</strong>.
             </p>
             <p className="font-body text-gray-700 text-lg leading-relaxed mb-6">
